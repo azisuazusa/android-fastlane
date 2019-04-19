@@ -14,5 +14,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         Fabric.with(this, Crashlytics())
+
+        println("testaja")
     }
 }
