@@ -1,7 +1,6 @@
 *.iml
 .gradle
 .env
-google-services.json
 client-secret.json
 /local.properties
 /.idea/caches

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "943198977847",
+    "firebase_url": "https://androidfastlane.firebaseio.com",
+    "project_id": "androidfastlane",
+    "storage_bucket": "androidfastlane.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943198977847:android:eeffbda1bb342c9a",
+        "android_client_info": {
+          "package_name": "com.example.androidfastlane"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943198977847-hhml2hiihh3e41khh5brc5m7fk71vj4s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU9--J7Z0-qqQA06SDOZnwyPPueswJUvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943198977847-hhml2hiihh3e41khh5brc5m7fk71vj4s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
