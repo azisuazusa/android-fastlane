@@ -8,7 +8,7 @@ references:
   android_config: &android_config
     working_directory: *workspace
     docker:
-      - image: circleci/android:api-27-alpha
+      - image: circleci/android:api-28
     environment:
       TERM: dumb
       _JAVA_OPTIONS: "-Xmx2048m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
@@ -46,7 +46,7 @@ jobs:
       - *save_gradle_cache
       - run:
           name: Deploy to Crashlytics Beta
-          command: ./gradlew assembleDebug
+          command: ./gradlew assembleDebug crashlyticsUploadDistributionDebug
 
 workflows:
   version: 2
