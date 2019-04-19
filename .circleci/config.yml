@@ -46,7 +46,7 @@ jobs:
       - *save_gradle_cache
       - run:
           name: Deploy to Crashlytics Beta
-          command: ./gradlew assembleDebug crashlyticsUploadDistributionDebug
+          command: ./gradlew assembleDebug
 
 workflows:
   version: 2
