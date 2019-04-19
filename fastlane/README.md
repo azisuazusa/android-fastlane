@@ -36,6 +36,26 @@ Deploy a new version to the Google Play
 fastlane android instrumentation_tests
 ```
 Run instrumentation tests
+### android instrumentation_tests_testlab
+```
+fastlane android instrumentation_tests_testlab
+```
+Run instrumentation tests in Firebase Test Lab
+### android assemble_build
+```
+fastlane android assemble_build
+```
+Assemble Build
+### android assemble_test_application
+```
+fastlane android assemble_test_application
+```
+Assemble Test Application
+### android assemble
+```
+fastlane android assemble
+```
+Assemble Build and Test Application
 
 ----
 
