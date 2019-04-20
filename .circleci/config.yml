@@ -39,6 +39,7 @@ jobs:
   ## Deploy to Crashlytics Beta
   deploy_crashlytics:
     <<: *android_config
+    working_directory: ~
     steps:
       - checkout
       - *restore_gradle_cache
