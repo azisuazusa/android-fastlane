@@ -1,5 +1,6 @@
 version: 2
 references:
+  ## Workspaces
   workspace: &workspace
     ~/src
 
@@ -7,7 +8,7 @@ references:
   android_config: &android_config
     working_directory: *workspace
     docker:
-      - image: circleci/android:api-27-alpha
+      - image: circleci/android:api-28
     environment:
       TERM: dumb
       _JAVA_OPTIONS: "-Xmx2048m -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
@@ -30,19 +31,11 @@ references:
 
   ## Dependencies
   android_dependencies: &android_dependencies
-  run:
-    name: Download Android Dependencies
-    command: ./gradlew androidDependencies
+    run:
+      name: Download Android Dependencies
+      command: ./gradlew androidDependencies
 
 jobs:
-  ## Run unit tests
-  test_unit:
-    # ...
-
-  ## Run instrumentation tests
-  test_instrumentation:
-    # ...
-
   ## Deploy to Crashlytics Beta
   deploy_crashlytics:
     <<: *android_config
@@ -52,8 +45,14 @@ jobs:
       - *android_dependencies
       - *save_gradle_cache
       - run:
-          name: Deploy to Crashlytics Beta
-          command: gradle assembleDebug crashlyticsUploadDistributionDebug
+          name: "Build..."
+          command: ./gradlew clean assembleDebug --no-daemon --stacktrace
+      - store_artifacts:
+          path: app/build/outputs/apk/
+          destination: apks/
+      - run:
+          name: "Deploy to Fabric 🎉🎉"
+          command: ./gradlew crashlyticsUploadDistributionDebug --stacktrace --debug --no-daemon
 
 workflows:
   version: 2
@@ -63,4 +62,4 @@ workflows:
           filters:
             branches:
               only:
-                - beta
+                - develop 
