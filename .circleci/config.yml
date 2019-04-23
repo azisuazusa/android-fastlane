@@ -7,6 +7,10 @@ jobs:
     environment:
       JVM_OPTS: -Xmx4G
     steps:
+      - filters:
+          branches:
+            only:
+              - develop 
       - checkout
       - run: echo "Working on some stuff..."
       - restore_cache:
@@ -28,6 +32,4 @@ jobs:
           name: "Deploy to Fabric 🎉🎉"
           command: |
             echo "Branch: ${CIRCLE_BRANCH} , PR: ${CIRCLE_PULL_REQUEST}"
-            if [ "${CIRCLE_BRANCH}" == "develop" -o "${CIRCLE_PULL_REQUEST}" != "" ]; then
-              ./gradlew crashlyticsUploadDistributionDebug --stacktrace --debug --no-daemon
-            fi
+            ./gradlew crashlyticsUploadDistributionDebug --stacktrace --debug --no-daemon
