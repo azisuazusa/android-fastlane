@@ -35,23 +35,24 @@ references:
       name: Download Android Dependencies
       command: ./gradlew androidDependencies
 
-  ## Deploy to Crashlytics Beta
-  deploy_crashlytics:
-    <<: *android_config
-    steps:
-      - checkout
-      - *restore_gradle_cache
-      - *android_dependencies
-      - *save_gradle_cache
-      - run:
-          name: "Build..."
-          command: ./gradlew clean assembleDebug --no-daemon --stacktrace
-      - store_artifacts:
-          path: app/build/outputs/apk/
-          destination: apks/
-      - deploy:
-          name: "Deploy to Fabric 🎉🎉"
-          command: ./gradlew crashlyticsUploadDistributionDebug --stacktrace --debug --no-daemon
+  jobs:
+    ## Deploy to Crashlytics Beta
+    deploy_crashlytics:
+      <<: *android_config
+      steps:
+        - checkout
+        - *restore_gradle_cache
+        - *android_dependencies
+        - *save_gradle_cache
+        - run:
+            name: "Build..."
+            command: ./gradlew clean assembleDebug --no-daemon --stacktrace
+        - store_artifacts:
+            path: app/build/outputs/apk/
+            destination: apks/
+        - deploy:
+            name: "Deploy to Fabric 🎉🎉"
+            command: ./gradlew crashlyticsUploadDistributionDebug --stacktrace --debug --no-daemon
 
 workflows:
   version: 2
